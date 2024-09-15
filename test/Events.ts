@@ -102,13 +102,13 @@ describe("EventManagementSystem", function () {
       await expect(eventmanagement.registerForEvent(
         nftAddress,
         1
-      )).to.not.be.reverted;
+      )).to.be.revertedWith("Can't register for event twice");
       await expect(eventmanagement.connect(otherAccount).registerForEvent(
         otherAccount.address,
         1
       )).to.be.revertedWithCustomError(eventmanagement, "InvalidNFT");
       
-      await expect(eventmanagement.connect(otherAccount).registerForEvent(
+       expect(eventmanagement.connect(otherAccount).registerForEvent(
         nftAddress,
         1
       ));

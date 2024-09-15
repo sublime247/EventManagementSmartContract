@@ -117,7 +117,7 @@ contract EventManagement {
         UserDetails memory _userRegister;
         require(!hasRegister[msg.sender][_eventId], "Can't register for event twice" );
         invalidNft(_userNftTokenAddress, eventDetail[_eventId].nftTokenAddress);
-
+       require(IERC721(_userNftTokenAddress).balanceOf(msg.sender)>1, "Insufficient Balance");
 
         _userRegister.userName = msg.sender;
         _userRegister.timeofRegister = block.timestamp;
