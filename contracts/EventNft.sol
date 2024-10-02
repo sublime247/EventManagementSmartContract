@@ -3,12 +3,13 @@
 pragma solidity ^0.8.24;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-// import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract EventNFT is ERC721URIStorage {
-     uint256 tokenIds;
+     uint256 private tokenIds;
 
-    constructor() ERC721("EventNFT", "EVT") {}
+    constructor() ERC721("EventNFT", "EVT") {
+        
+    }
 
     function mintNft(string memory tokenURI)
         public
